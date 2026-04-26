@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-surface: #171717;
+  --color-primary: #39ff14;
+  --color-secondary: #00f0ff;
+  --color-danger: #ff003c;
+  --color-warning: #ffea00;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: white;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  ::selection {
+    background-color: var(--color-primary);
+    color: black;
+  }
+}
+
+/* Custom Leaflet Map styles for dark theme */
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-container {
+  background: #0a0a0a !important;
+}
