@@ -32,7 +32,7 @@ const defaultIcon = new L.Icon({
 });
 
 export default function ConsumerMap() {
-  const { inventory } = useStore();
+  const { inventory, claimItem } = useStore();
   const center = [19.0760, 72.8777]; // Mumbai Center
 
   // Show only items that are NOT donated yet
@@ -74,7 +74,13 @@ export default function ConsumerMap() {
                         {item.riskLevel} Risk
                       </span>
                     </div>
-                    <button className="w-full bg-black text-white hover:bg-gray-800 py-2 rounded-md font-medium text-sm transition-colors flex items-center justify-center">
+                    <button 
+                      onClick={() => {
+                        claimItem(item.id);
+                        alert(`Successfully reserved "${item.name}"! Claim recorded.`);
+                      }}
+                      className="w-full bg-black text-white hover:bg-gray-800 py-2 rounded-md font-medium text-sm transition-colors flex items-center justify-center"
+                    >
                       <ShoppingBag className="w-4 h-4 mr-2" />
                       Reserve Now
                     </button>

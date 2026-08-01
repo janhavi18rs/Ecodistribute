@@ -83,6 +83,17 @@ app.post('/api/claim', (req, res) => {
   res.json({ success: true });
 });
 
+app.post('/api/reset', (req, res) => {
+  globalTimeOffset = 0;
+  inventory = [
+    { id: '1', name: 'Whole Wheat Pav', category: 'Bakery', initialPrice: 40, currentPrice: 40, expiresAt: Date.now() + 8 * 60 * 60 * 1000, riskLevel: 'Green', isDonated: false, location: { lat: 19.0760, lng: 72.8777 } },
+    { id: '2', name: 'Alphonso Mangoes', category: 'Produce', initialPrice: 600, currentPrice: 600, expiresAt: Date.now() + 5 * 60 * 60 * 1000, riskLevel: 'Yellow', isDonated: false, location: { lat: 19.0748, lng: 72.8760 } },
+    { id: '3', name: 'Amul Milk (1L)', category: 'Dairy', initialPrice: 66, currentPrice: 66, expiresAt: Date.now() + 12 * 60 * 60 * 1000, riskLevel: 'Green', isDonated: false, location: { lat: 19.0780, lng: 72.8800 } },
+    { id: '4', name: 'Paneer Tikka Meal', category: 'Deli', initialPrice: 250, currentPrice: 250, expiresAt: Date.now() + 4.5 * 60 * 60 * 1000, riskLevel: 'Yellow', isDonated: false, location: { lat: 19.0800, lng: 72.8750 } },
+  ];
+  res.json({ success: true, currentTime: Date.now(), inventory });
+});
+
 app.listen(PORT, () => {
   console.log(`Backend listening on port ${PORT}`);
 });
